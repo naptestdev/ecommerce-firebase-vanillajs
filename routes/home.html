@@ -1,0 +1,52 @@
+<div class="navbar">
+  <a href="/index.html">
+    <h1>Mind<span>X</span> Store</h1>
+  </a>
+  <div id="navbar-links"></div>
+</div>
+
+<div class="main-content">
+  <div id="products"></div>
+</div>
+
+<script type="module">
+  import { products } from "../scripts/data.js";
+
+  for (let product of products) {
+    let card = /*html*/ `
+  <div class="product_card">
+    <div class="image-container">
+      <img src="${product.image}" /> 
+    </div> 
+    <div class="container">
+      <div class="info">
+        <h5>${product.title}</h5> 
+        <h6>Price: $${product.price}</h6>
+      </div>
+      <button>Add to cart</button>
+    </div>
+  </div>
+  `;
+
+    document.getElementById("products").innerHTML += card;
+  }
+
+  import { auth } from "../scripts/firebase.js";
+  import { signOut } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+
+  window.handleSignOut = () => {
+    signOut(auth);
+  };
+
+  if (auth.currentUser) {
+    document.querySelector("#navbar-links").innerHTML = /*html*/ `
+      <img class="navbar-avatar" src="${auth.currentUser.photoURL}" alt="" />
+      <button onclick="handleSignOut()" class="btn btn-danger">Logout</button>
+    `;
+  } else {
+    document.querySelector("#navbar-links").innerHTML = /*html*/ `
+      <a href="#/login" class="btn btn-success">Login</a>
+      <a href="#/register" class="btn btn-primary">Register</a>
+    `;
+  }
+</script>

@@ -62,7 +62,7 @@ a {
   padding: 30px 5vw;
 }
 
-#products .card {
+#products .product_card {
   cursor: pointer;
   transition: 0.3s;
   display: flex;
@@ -70,11 +70,11 @@ a {
   align-items: stretch;
 }
 
-#products .card:hover {
+#products .product_card:hover {
   transform: translateY(-5px);
 }
 
-#products .card .image-container {
+#products .product_card .image-container {
   position: relative;
   width: auto;
   height: 0;
@@ -82,7 +82,7 @@ a {
   flex-shrink: 0;
 }
 
-#products .card .image-container img {
+#products .product_card .image-container img {
   position: absolute;
   top: 0;
   left: 0;
@@ -91,7 +91,7 @@ a {
   object-fit: cover;
 }
 
-#products .card .container {
+#products .product_card .container {
   padding-top: 1em;
   color: #110f29;
   flex-grow: 1;
@@ -101,11 +101,11 @@ a {
   align-items: stretch;
 }
 
-#products .card .container .info {
+#products .product_card .container .info {
   flex-grow: 1;
 }
 
-#products .card .container h5 {
+#products .product_card .container h5 {
   font-weight: 500;
   font-size: 18px;
 
@@ -117,13 +117,13 @@ a {
   overflow: hidden;
 }
 
-#products .card .container h6 {
+#products .product_card .container h6 {
   font-weight: 400;
   font-size: 14px;
   padding-top: 5px;
 }
 
-#products .card .container button {
+#products .product_card .container button {
   background-color: white;
   border: none;
   border: solid 1px black;
@@ -136,7 +136,13 @@ a {
   transition: 0.3s;
 }
 
-#products .card .container button:hover {
+#products .product_card .container button:hover {
   background-color: black;
   color: white;
+}
+
+.navbar-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 99999px;
 }
