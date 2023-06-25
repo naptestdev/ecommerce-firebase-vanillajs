@@ -1,5 +1,5 @@
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
-import { auth } from "./firebase.js";
+import { auth, subscriptions } from "./firebase.js";
 
 const routes = {
   "/": {
@@ -16,6 +16,11 @@ const routes = {
     body: "./routes/register.html",
     requireAuth: false,
     notRequireAuth: true,
+  },
+  "/cart": {
+    body: "./routes/cart.html",
+    requireAuth: true,
+    notRequireAuth: false,
   },
 };
 
@@ -44,6 +49,8 @@ const isMatchRoute = (route, pathname) => {
 export let params = {};
 
 const renderRoute = () => {
+  subscriptions.forEach((subscription) => subscription());
+
   let hasMatched = false;
   for (const route in routes) {
     const { isMatching, params: loadedParams } = isMatchRoute(
